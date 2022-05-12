@@ -1,5 +1,7 @@
 # guidelines for using this project
 
+this project is submodule of fullstackopen
+
 ## general info
 
 - project is created with [CRA](https://create-react-app.dev/).
