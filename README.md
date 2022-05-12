@@ -1,6 +1,6 @@
 # guidelines for using this project
 
-this project is submodule of fullstackopen
+this project is the submodule of fullstackopen.
 
 ## general info
 
