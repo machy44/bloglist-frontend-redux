@@ -29,3 +29,14 @@ this project is the submodule of fullstackopen.
 
 - [Chakra UI](https://chakra-ui.com/) is used to create and style react components
 - [Storybook](https://storybook.js.org/) is used to implement components in isolation
+
+## related to git
+
+### [Husky](https://www.npmjs.com/package/husky)
+
+- this project has `pre-commit` and `pre-push` hooks defined. `pre-commit` executes lint-staged. `pre-push` executes unit tests
+
+### [commitizen](https://github.com/commitizen/cz-cli)
+
+- used for commit message formatting. In husky there is `prepare-commit-msg` hook define to intercept
+  git commit command. This is used to avoid using `npm` to create commit via `"commit": "git-cz"` script in package.json
