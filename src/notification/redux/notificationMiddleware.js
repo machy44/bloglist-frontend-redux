@@ -8,7 +8,7 @@ export const errorNotification =
   (action) => {
     try {
       if (isRejectedWithValue(action)) {
-        dispatch(setErrorNotification(action.payload.error));
+        dispatch(setErrorNotification(action.payload.error || action.payload.data.error));
         setTimeout(() => {
           dispatch(removeErrorNotification(null));
         }, 5000);
