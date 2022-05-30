@@ -40,7 +40,7 @@ describe('blog-list app', function () {
           .should('contain', 'a new blog cypress by cypress')
           .and('have.css', 'border-color', 'rgb(0, 128, 0)');
       });
-      describe.only('several blogs exist', function () {
+      describe('several blogs exist', function () {
         beforeEach(function () {
           cy.login({
             username: 'mluukkai',
@@ -89,29 +89,44 @@ describe('blog-list app', function () {
           cy.get('@firstBlogLink').click();
           cy.get('[data-testid=remove-button]').should('not.exist');
         });
-        it('blogs should be ordered by number of likes', function () {
+        it.only('blogs should be ordered by number of likes', function () {
           cy.get('@firstBlogLink').click();
           cy.get('[data-testid=blog-likes]').find('button').as('firstBlogLikeButton');
           cy.get('@firstBlogLikeButton').click();
+          // eslint-disable-next-line cypress/no-unnecessary-waiting
           cy.wait(500);
           cy.get('@firstBlogLikeButton').click();
+          // eslint-disable-next-line cypress/no-unnecessary-waiting
           cy.wait(500);
           cy.get('@firstBlogLikeButton').click();
           cy.go('back');
           cy.get('@secondBlogLink').click();
           cy.get('[data-testid=blog-likes]').find('button').as('secondBlogLikeButton');
           cy.get('@secondBlogLikeButton').click();
+          // eslint-disable-next-line cypress/no-unnecessary-waiting
           cy.wait(500);
           cy.get('@secondBlogLikeButton').click();
+          // eslint-disable-next-line cypress/no-unnecessary-waiting
           cy.wait(500);
           cy.get('@secondBlogLikeButton').click();
+          // eslint-disable-next-line cypress/no-unnecessary-waiting
           cy.wait(500);
           cy.get('@secondBlogLikeButton').click();
           cy.go('back');
+          // eslint-disable-next-line cypress/no-unnecessary-waiting
+          cy.wait(500);
           cy.get('[data-testid=blog-main-info]').then((elements) => {
-            cy.get(elements[0]).contains('first blog');
-            cy.get(elements[1]).contains('second blog');
+            cy.get(elements[0]).contains('second blog');
+            cy.get(elements[1]).contains('first blog');
             cy.get(elements[2]).contains('third blog');
+          });
+        });
+        describe('comment blogs', function () {
+          it('user comments blog', function () {
+            cy.get('@firstBlogLink').click();
+            cy.get('[data-testid=comment]').type('cypress adds comment');
+            cy.get('[data-testid=comment-submit]').click();
+            cy.get('[data-testid=comment-list-0]').contains('cypress adds comment');
           });
         });
       });

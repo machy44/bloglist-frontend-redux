@@ -33,8 +33,12 @@ export const Comments = ({ comments, handleSubmit }) => {
         }}
       </Form>
       <UnorderedList>
-        {comments.map((comment) => {
-          return <ListItem key={comment.id}>{comment.text}</ListItem>;
+        {comments.map((comment, index) => {
+          return (
+            <ListItem key={comment.id} data-testid={`comment-list-${index}`}>
+              {comment.text}
+            </ListItem>
+          );
         })}
       </UnorderedList>
     </>
