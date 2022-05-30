@@ -10,6 +10,8 @@ export const Users = () => {
     return <div>Loading users</div>;
   }
 
+  console.log({ users });
+
   return (
     <Table title="Users" variant="striped">
       <Thead>

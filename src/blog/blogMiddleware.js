@@ -4,7 +4,6 @@ import {
   setErrorNotification,
   removeErrorNotification
 } from '../notification/redux/notificationSlice';
-import { endpoints } from '../blog/services/blogs';
 
 const extractActionsMetaData = (actionMeta, endpointName, status) => {
   return (
@@ -18,9 +17,7 @@ export const blogCreatedNotification =
   ({ dispatch }) =>
   (next) =>
   (action) => {
-    console.log({ endpoints });
     if (action.meta && extractActionsMetaData(action.meta, 'createBlog', 'fulfilled')) {
-      console.log(action.meta);
       dispatch(setSuccessNotification(`a new blog ${action.payload.title} by ${action.payload.author}`));
       setTimeout(() => {
         dispatch(removeSuccessNotification(null));
@@ -48,8 +45,6 @@ export const incrementLikeError =
   ({ dispatch }) =>
   (next) =>
   (action) => {
-    console.log(action);
-    console.log(action.meta && extractActionsMetaData(action.meta, 'incrementLike', 'rejected'));
     if (action.meta && extractActionsMetaData(action.meta, 'incrementLike', 'rejected')) {
       dispatch(setErrorNotification('Update unsuccessful. Try again!'));
       setTimeout(() => {
