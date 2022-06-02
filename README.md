@@ -25,6 +25,10 @@ this project is the submodule of fullstackopen.
 - script to run cypress tests with gui `npm run cypress:open`
 - script to run cypress without gui `npm cypress:run`
 
+## analytics - wip
+
+- created analytics provider and custom hook which has [firebase](https://firebase.google.com/) custom events created for analytics
+
 ## Implement components
 
 - [Chakra UI](https://chakra-ui.com/) is used to create and style react components
