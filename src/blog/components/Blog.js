@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Card, Text, UnorderedList, ListItem, Button, AlertDialog, Heading } from 'ui';
 import { HStack, Link as Clink, Box } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
-import { Comments } from '../../comments/Comments';
+import { Comments } from '../../comments/components/Comments';
 
 export const BlogMainInfo = ({ blog }) => {
   return (

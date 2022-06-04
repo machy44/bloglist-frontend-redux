@@ -1,22 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { api } from '../../api';
 
-const baseUrlRtk = '/api';
-
-export const blogsApi = createApi({
-  reducerPath: 'blogs',
-  tagTypes: ['Blogs', 'Users'],
-  baseQuery: fetchBaseQuery({
-    baseUrl: baseUrlRtk,
-    prepareHeaders: (headers, { getState }) => {
-      // By default, if we have a token in the store, let's use that for authenticated requests
-      const token = getState().auth?.token;
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-      return headers;
-    }
-  }),
-
+export const blogsApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getBlogs: builder.query({
       query: () => '/blogs',
@@ -60,14 +44,6 @@ export const blogsApi = createApi({
         }
       }),
       invalidatesTags: ['Blogs']
-    }),
-
-    getUsers: builder.query({
-      query: () => '/users',
-      providesTags: ['Users']
-    }),
-    getUserById: builder.query({
-      query: (id) => `/users/${id}`
     })
   })
 });
@@ -79,7 +55,5 @@ export const {
   useCreateBlogMutation,
   useIncrementLikeMutation,
   useRemoveBlogMutation,
-  useCommentBlogMutation,
-  useGetUsersQuery,
-  useGetUserByIdQuery
+  useCommentBlogMutation
 } = blogsApi;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetUsersQuery } from '../../blog/services/blogs';
+import { useGetUsersQuery } from '../services/users';
 import { Text, Table } from 'ui';
 import { Link as CLink, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
@@ -9,8 +9,6 @@ export const Users = () => {
   if (isLoadingUsers) {
     return <div>Loading users</div>;
   }
-
-  console.log({ users });
 
   return (
     <Table title="Users" variant="striped">
