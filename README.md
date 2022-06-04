@@ -21,7 +21,8 @@ this project is the submodule of fullstackopen.
 
 ## analytics - wip
 
-- created analytics provider and custom hook which has [firebase](https://firebase.google.com/) custom events created for analytics
+- created analytics provider and custom hook which has [firebase](https://firebase.google.com/) custom events created for analytics.
+- execute `start:analytics` script to enable firebase analytics events in the project
 
 ## Implement components
 
