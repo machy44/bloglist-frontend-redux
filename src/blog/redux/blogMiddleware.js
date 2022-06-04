@@ -3,7 +3,7 @@ import {
   removeSuccessNotification,
   setErrorNotification,
   removeErrorNotification
-} from '../notification/redux/notificationSlice';
+} from '../../notification/redux/notificationSlice';
 
 const extractActionsMetaData = (actionMeta, endpointName, status) => {
   return (
