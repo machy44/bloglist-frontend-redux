@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrlRtk = '/api/blogs';
+const baseUrlRtk = '/api';
 
 export const blogsApi = createApi({
   reducerPath: 'blogs',
-  tagTypes: ['Blogs'],
+  tagTypes: ['Blogs', 'Users'],
   baseQuery: fetchBaseQuery({
     baseUrl: baseUrlRtk,
     prepareHeaders: (headers, { getState }) => {
@@ -19,7 +19,7 @@ export const blogsApi = createApi({
 
   endpoints: (builder) => ({
     getBlogs: builder.query({
-      query: () => '/',
+      query: () => '/blogs',
       providesTags: ['Blogs']
     }),
     getBlogById: builder.query({
@@ -27,15 +27,15 @@ export const blogsApi = createApi({
     }),
     createBlog: builder.mutation({
       query: (newBlog) => ({
-        url: '/',
+        url: '/blogs',
         method: 'POST',
         body: newBlog
       }),
-      invalidatesTags: ['Blogs']
+      invalidatesTags: ['Blogs', 'Users']
     }),
     incrementLike: builder.mutation({
       query: (blog) => ({
-        url: `/${blog.id}`,
+        url: `/blogs/${blog.id}`,
         method: 'PUT',
         body: {
           ...blog,
@@ -46,20 +46,28 @@ export const blogsApi = createApi({
     }),
     removeBlog: builder.mutation({
       query: (id) => ({
-        url: `/${id}`,
+        url: `/blogs/${id}`,
         method: 'DELETE'
       }),
-      invalidatesTags: ['Blogs']
+      invalidatesTags: ['Blogs', 'Users']
     }),
     commentBlog: builder.mutation({
       query: ({ id, text }) => ({
-        url: `/${id}/comments`,
+        url: `/blogs/${id}/comments`,
         method: 'POST',
         body: {
           text
         }
       }),
       invalidatesTags: ['Blogs']
+    }),
+
+    getUsers: builder.query({
+      query: () => '/users',
+      providesTags: ['Users']
+    }),
+    getUserById: builder.query({
+      query: (id) => `/users/${id}`
     })
   })
 });
@@ -71,5 +79,7 @@ export const {
   useCreateBlogMutation,
   useIncrementLikeMutation,
   useRemoveBlogMutation,
-  useCommentBlogMutation
+  useCommentBlogMutation,
+  useGetUsersQuery,
+  useGetUserByIdQuery
 } = blogsApi;

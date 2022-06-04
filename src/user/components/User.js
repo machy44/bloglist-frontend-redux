@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetUsersQuery } from '../userService';
+import { useGetUsersQuery } from '../../blog/services/blogs';
 import { useMatch, Link } from 'react-router-dom';
 import { Heading, OrderedList, ListItem, Text } from 'ui';
 import { Link as CLink, VStack } from '@chakra-ui/react';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetUsersQuery } from '../userService';
+import { useGetUsersQuery } from '../../blog/services/blogs';
 import { Text, Table } from 'ui';
 import { Link as CLink, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
