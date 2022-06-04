@@ -6,7 +6,7 @@ this project is the submodule of fullstackopen.
 
 - project is created with [CRA](https://create-react-app.dev/).
 - This project uses [redux-toolkit](https://redux-toolkit.js.org/) for state and
-  [RTK](https://redux-toolkit.js.org/rtk-query/overview) for fetching and caching data.
+  [RTK query](https://redux-toolkit.js.org/rtk-query/overview) for fetching and caching data.
 - [react router v6](https://reactrouter.com/docs/en/v6/getting-started/overview) is used for routing.
 - [react hook forms](https://react-hook-form.com/) with [yup](https://www.npmjs.com/package/yup) are used for form validations
 
@@ -58,15 +58,15 @@ this project is the submodule of fullstackopen.
 - requests - [REST client api](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) requests for testing purposes
 
 - App.js - root component for application
-- api.js - root [RTQ createApi](https://redux-toolkit.js.org/rtk-query/api/createApi) for the application. Exposed api object from this file is used in blog, user modules which [injectsEndpoints](https://redux-toolkit.js.org/rtk-query/usage/code-splitting) to `api` root object.
+- api.js - root [RTK query createApi](https://redux-toolkit.js.org/rtk-query/api/createApi) for the application. Exposed `api` object from this file is used in `blog`, `user` modules which uses [RTK query injectsEndpoints](https://redux-toolkit.js.org/rtk-query/usage/code-splitting) to inject endpoints into `api` root object.
 
 ### blogs app modules
 
-structured by blog, comments, login, notification, user modules.
+Structured by `blog`, `comments`, `login`, `notification`, `user` modules.
 
-Each module can have these directories and files
+Each module can have these directories and files inside
 
-- **_components_** - react components with certain logic inside.
+- **_components_** - react components with certain logic as part of them.
 - **_services_** - if modules has services it means that it injects endpoints to root api object (`api.js` file).
 - **_redux_** - everything related to redux and data layer. It can have [slices](https://redux-toolkit.js.org/api/createslice) for generating `actions` and `reducers`. Redux `middlewares` also should be defined inside this directory if module has any - for example `blogMiddleware` is in charge to update notification (it uses notification module actions) reducer/state when certain blogs action is triggered.
 - **_hooks.js_** - react custom hooks related to certain module (for example `useLogin` in login module).
